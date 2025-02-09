@@ -35,7 +35,7 @@ When you click open, it should be reading out values.
 2. Set environment variable SENSOR_COM_PORT to whichever com port your trinket is connected to.
 
 ## Control PC fans using temp sensor - PowerShell
-1. I use tool called [Fan Control](https://github.com/Rem0o/FanControl.Releases). It's a great free tool that accepts file as mock "sensor". We can log our liquid temps into files and **Fan Control** will control our fans using this files. Download the tool and create new custom sensor.
+1. I use tool called [Fan Control](https://github.com/Rem0o/FanControl.Releases). It's a great free tool that accepts file as mock "sensor". We can log our liquid temps into files and **Fan Control** will control our fans using these files. Download the tool and create new custom sensor.
 2. Launch Windows Scheduler and create new Task:
 - basic: administrator privileges + launch regardless of logged in user
 - trigger: on user login
