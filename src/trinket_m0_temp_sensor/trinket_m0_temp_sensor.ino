@@ -144,11 +144,11 @@ void loop() {                                          // no delay needed, alrea
 
   /*if (averageResistance1 > 20000 || averageResistance1 < 2500 ||
       averageResistance2 > 20000 || averageResistance2 < 2500 ||
-      ambient < 10 || ambient > 45 ||
-      liquid < 10 || liquid > 60 ||
+      ambient < 15 || ambient > 45 ||
+      liquid < 15 || liquid > 60 ||
       (delta) < -2) {                                  // Failure detection
     led_on();
-    json_temp(0, 50);                                  // Delta of 50 degrees, set fans in Fan Control to 100% to give audible cue
+    json_temp(0, 100);                                 // Delta of 100 degrees, set fans in Fan Control to 100% to give audible cue
     return;
   }*/
 

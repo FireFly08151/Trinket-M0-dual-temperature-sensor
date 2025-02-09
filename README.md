@@ -35,14 +35,12 @@ When you click open, it should be reading out values.
 2. Set environment variable SENSOR_COM_PORT to whichever com port your trinket is connected to.
 
 ## Control PC fans using temp sensor - PowerShell
-> [!NOTE]  
-> Removed the code since i haven't adapted the script for two sensors yet.
-1. I use tool called [Fan Control](https://github.com/Rem0o/FanControl.Releases). It's a great free tool that accepts file as mock "sensor". We can log our liquid temp into file and **Fan Control** will control our fans using this file. Download the tool and create new custom sensor.
+1. I use tool called [Fan Control](https://github.com/Rem0o/FanControl.Releases). It's a great free tool that accepts file as mock "sensor". We can log our liquid temps into files and **Fan Control** will control our fans using this files. Download the tool and create new custom sensor.
 2. Launch Windows Scheduler and create new Task:
 - basic: administrator privileges + launch regardless of logged in user
 - trigger: on user login
-- actions: launch program - powershell, arguments: -command &{path-to\Trinket-M0-liquid-temperature-sensor\src\WatchLiquidTemp.ps1 -filePath 'path-to\FanControl\LiquidTemp.sensor' -com COM6} (change COM6 to whatever is seen by your system)
+- actions: launch program - powershell, arguments: -command &{path-to\Trinket-M0-liquid-temperature-sensor\src\WatchLiquidTemp.ps1 -filePath1 'path-to\FanControl\LiquidTemp1.sensor' -filePath2 'path-to\FanControl\LiquidTemp2.sensor' -com COM6} (change COM6 to whatever is seen by your system)
 3. Save your task and restart system. After reboot your custom sensor should display values from liquid temp sensor.
 
 ## Acknowledgements
-- [gmoorec](https://github.com/gmoorec/Seeed-Studio-XIAO-SAMD21-Dual-Temperature-Sensor): plugin
+Plugin by [gmoorec](https://github.com/gmoorec/Seeed-Studio-XIAO-SAMD21-Dual-Temperature-Sensor)

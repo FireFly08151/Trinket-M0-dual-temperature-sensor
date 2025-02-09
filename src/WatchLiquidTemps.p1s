@@ -1,0 +1,46 @@
+# This script was generated to read JSON-formatted temperature data from a serial port and store values in separate files.
+
+param(
+    [string]$filePath1 = $(throw "Temperature 1 file path not specified"),
+    [string]$filePath2 = $(throw "Temperature 2 file path not specified"),
+    [string]$com = $(throw "COM port not specified")
+)
+
+[System.IO.Ports.SerialPort]$port = New-Object System.IO.Ports.SerialPort $com, 9600, None, 8, one
+$port.DtrEnable = $true
+
+try {
+    Write-Host 'Checking if port is open...'
+    if ($port.IsOpen) {
+        Write-Host 'Port is open, closing...'
+        $port.Close()
+    }
+    Write-Host 'Port is closed'
+    
+    Write-Host 'Opening port...'
+    $port.Open()
+    Write-Host 'Port opened successfully'
+    
+    while ($port.IsOpen) {
+        try {
+            $line = $port.ReadLine().Trim()
+            
+            # Parse JSON
+            $json = $line | ConvertFrom-Json
+            
+            # Validate JSON structure
+            if ($json -and $json.PSObject.Properties.Name -contains 'temp1' -and $json.PSObject.Properties.Name -contains 'temp2') {
+                $temp1 = [math]::Round($json.temp1, 2)
+                $temp2 = [math]::Round($json.temp2, 2)
+                
+                # Store values in respective files
+                Set-Content -Path $filePath1 -Value $temp1
+                Set-Content -Path $filePath2 -Value $temp2
+            }
+        } catch {
+            Write-Host "Error processing data: $_"
+        }
+    }
+} finally {
+    if ($port.IsOpen) { $port.Close() }
+}
