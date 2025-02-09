@@ -1,4 +1,4 @@
-# Trinket-M0-liquid-temperature-sensor
+# Trinket-M0-dual-temperature-sensor
 Simple project to allow monitoring of liquid temps in liquid cooling PCs with mainboards without temperature pins.
 
 > [!WARNING]  
