@@ -1,32 +1,49 @@
-﻿using FanControl.Plugins;
+using FanControl.Plugins;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace FanControl.SerialComSensor
 {
-    public class SerialCOMSensor : IPluginSensor
+    public class TempSensor : IPluginSensor
     {
         private COMReader reader;
+        private string sensorId;
 
-        public SerialCOMSensor(COMReader reader)
+        public TempSensor(COMReader reader, string sensorId)
         {
-            Value = States.INITIAL;
             this.reader = reader;
+            this.sensorId = sensorId;
         }
 
-        public string Id => Name;
+        public string Id => sensorId;
 
-        public string Name => "SerialCOMSensor";
+        public string Name => sensorId + "Sensor";
 
         public float? Value { get; private set; }
 
+        public Dictionary<string, float?> Values { get; private set; } = new Dictionary<string, float?>();
+
         public void Update()
         {
-            float result;
-            if (float.TryParse(reader.Data, out result))
+            try
             {
-                Value = result;
+                var jsonObject = JsonConvert.DeserializeObject<Dictionary<string, float>>(reader.Data);
+
+                if (jsonObject.ContainsKey(sensorId))
+                {
+                    Value = jsonObject[sensorId];
+                }
+                else
+                {
+                    Values.Clear();
+                    Values["error"] = States.COULDNT_PARSE;
+                }
             }
-            else {
-                Value = States.COULDNT_PARSE;
+            catch (JsonReaderException)
+            {
+                Values.Clear();
+                Values["error"] = States.COULDNT_PARSE;
             }
         }
     }

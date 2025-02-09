@@ -1,10 +1,10 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// Ogólne informacje o zestawie są kontrolowane poprzez następujący 
-// zestaw atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
-// powiązane z zestawem.
+// General information about the assembly is controlled by the following 
+// set of attributes. Change the values of these attributes to modify information
+// associated with the assembly.
 [assembly: AssemblyTitle("FanControlPlugin.ComSensor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -14,23 +14,23 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Ustawienie elementu ComVisible na wartość false sprawia, że typy w tym zestawie są niewidoczne
-// dla składników COM. Jeśli potrzebny jest dostęp do typu w tym zestawie z
-// COM, ustaw wartość true dla atrybutu ComVisible tego typu.
+// Setting ComVisible to false makes the types in this assembly invisible
+// to COM components. If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true for this type.
 [assembly: ComVisible(false)]
 
-// Następujący identyfikator GUID jest identyfikatorem biblioteki typów w przypadku udostępnienia tego projektu w modelu COM
+// The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("648acbb1-71b2-4845-b785-d5f23cb659c2")]
 
-// Informacje o wersji zestawu zawierają następujące cztery wartości:
+// Version information for the assembly contains the following four values:
 //
-//      Wersja główna
-//      Wersja pomocnicza
-//      Numer kompilacji
-//      Poprawka
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
 //
-// Możesz określić wszystkie wartości lub użyć domyślnych numerów kompilacji i poprawki
-// przy użyciu symbolu „*”, tak jak pokazano poniżej:
+// You can specify all the values or you can use the default build and revision
+// numbers by using the '*' symbol, as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

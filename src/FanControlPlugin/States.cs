@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace FanControl.SerialComSensor
 {
     internal class States
     {
-        public const float INITIAL = -10;
-        public const float PORT_OPENED = 0;
-        public const float COULDNT_PARSE = -1;
+        public const int INITIAL = -10;
+        public const int PORT_OPENED = 0;
+        public const int COULDNT_PARSE = -1;
+        public const int INVALID_JSON = -2; // Added a new state for invalid JSON structure
     }
 }
