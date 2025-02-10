@@ -49,8 +49,11 @@ int temp_to_colors[25][2] = {
 };
 
 Adafruit_DotStar rgbLed(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BGR);
+float averageResistance1, averageResistance2, ambient, liquid;
+int delta, lastdelta;
 
 void setup() {
+  lastdelta = -100;
   pinMode(RED_LED, OUTPUT);
   led_off();
   Serial.begin(9600);
@@ -116,9 +119,6 @@ void json_temp(float temp1, float temp2) {             // Outputs in JSON format
   Serial.print(temp2);
   Serial.println("}");
 }
-
-float averageResistance1, averageResistance2, ambient, liquid;
-int delta, lastdelta;
 
 void loop() {                                          // no delay needed, already provided by NUMSAMPLES * SAMPLEDELAY
   take_reading(averageResistance1, averageResistance2);
