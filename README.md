@@ -17,12 +17,12 @@ Simple project to allow monitoring of liquid temps in liquid cooling PCs with ma
 
 | Avg. Color | Temp delta   | Description  |
 | ---------- | ------------ | ------------ |
-| Blue       | < 4          | Ambient      |
-| Green      | 5 - 12       | Idle         | 
-| Yellow     | 13 - 20      | Light load   |
-| Orange     | 21 - 33      | Regular load |
-| Red        | 34 - 40      | Overheat     |
-| Hot Pink   | > 40         | Danger!      |
+| Blue       | < 3          | Ambient      |
+| Green      | 3 - 9        | Idle         | 
+| Yellow     | 10 - 13      | Light load   |
+| Orange     | 14 - 19      | Regular load |
+| Red        | 20 - 24      | Overheat     |
+| Hot Pink   | > 24         | Danger!      |
 
 Keep in mind that colors will tend to shift from blue -> green -> yellow -> orange -> red smoothly, so it's best to expect some color range as indication of actual temperature.
 
