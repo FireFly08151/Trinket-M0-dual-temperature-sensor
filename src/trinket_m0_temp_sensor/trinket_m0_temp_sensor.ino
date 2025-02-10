@@ -20,47 +20,32 @@
 #define RED 0xFF0000
 #define PINK 0xFF0EF0
 
-int temp_to_colors[40][2] = {
-  { 0, 0x00D4FF },
-  { 1, 0x00E4FF },
-  { 2, 0x00fff4 },
-  { 3, 0x00ffd0 },
-  { 4, 0x00ffa8 },
-  { 5, 0x00ff83 },
-  { 6, 0x00ff5c },
-  { 7, 0x00ff36 },
-  { 8, 0x00ff10 },
-  { 9, 0x17ff00 },
-  { 10, 0x3eff00 },
-  { 11, 0x65ff00 },
-  { 12, 0x8aff00 },
-  { 13, 0xb0ff00 },
-  { 14, 0xd7ff00 },
-  { 15, 0xfdff00 },
-  { 16, 0xFFfa00 },
-  { 17, 0xFFf000 },
-  { 18, 0xFFe600 },
-  { 19, 0xFFdc00 },
-  { 20, 0xFFd200 },
-  { 21, 0xFFc800 },
-  { 22, 0xFFbe00 },
-  { 23, 0xFFb400 },
-  { 24, 0xFFaa00 },
-  { 25, 0xFFa000 },
-  { 26, 0xFF9600 },
-  { 27, 0xFF8c00 },
-  { 28, 0xFF8200 },
-  { 29, 0xFF7800 },
-  { 30, 0xFF6e00 },
-  { 31, 0xFF6400 },
-  { 32, 0xFF5a00 },
-  { 33, 0xFF5000 },
-  { 34, 0xFF4600 },
-  { 35, 0xFF3c00 },
-  { 36, 0xFF3200 },
-  { 37, 0xFF2800 },
-  { 38, 0xFF1e00 },
-  { 39, 0xFF1400 },
+int temp_to_colors[25][2] = {
+  { 0, 0x00A1FF },
+  { 1, 0x00B3CC },
+  { 2, 0x00C699 },
+  { 3, 0x00D766 },
+  { 4, 0x00EC33 },
+  { 5, 0x00FF00 },
+  { 6, 0x00FF00 },
+  { 7, 0x33FF00 },
+  { 8, 0x66FF00 },
+  { 9, 0x99FF00 },
+  { 10, 0xCCFF00 },
+  { 11, 0xFFFF00 },
+  { 12, 0xFFFF00 },
+  { 13, 0xFFE500 },
+  { 14, 0xFFCB00 },
+  { 15, 0xFFB100 },
+  { 16, 0xFF9700 },
+  { 17, 0xFF7F00 },
+  { 18, 0xFF7F00 },
+  { 19, 0xFF6400 },
+  { 20, 0xFF4B00 },
+  { 21, 0xFF3200 },
+  { 22, 0xFF1900 },
+  { 23, 0xFF0000 },
+  { 24, 0xFF0000 }
 };
 
 Adafruit_DotStar rgbLed(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BGR);
@@ -119,7 +104,7 @@ void set_rgb_color(int color) {
 }
 
 int temp_to_rgb(int delta) {
-  if (delta >= 40) { return PINK; }
+  if (delta >= 25) { return PINK; }
   if (delta < 0) { return BLUE; }
   return temp_to_colors[delta][1];
 }
