@@ -122,20 +122,19 @@ void json_temp(float temp1, float temp2) {             // Outputs in JSON format
 
 void loop() {                                          // no delay needed, already provided by NUMSAMPLES * SAMPLEDELAY
   take_reading(averageResistance1, averageResistance2);
-  //ambient = calculate_temp(averageResistance1);
-  ambient = 22.0;
+  ambient = calculate_temp(averageResistance1);
   liquid = calculate_temp(averageResistance2);
   delta = round(liquid - ambient);
 
-  /*if (averageResistance1 > 20000 || averageResistance1 < 2500 ||
+  if (averageResistance1 > 20000 || averageResistance1 < 2500 ||
       averageResistance2 > 20000 || averageResistance2 < 2500 ||
       ambient < 15 || ambient > 45 ||
       liquid < 15 || liquid > 60 ||
-      (delta) < -2) {                                  // Failure detection
+      delta < -2) {                                    // Failure detection
     led_on();
     json_temp(0, 100);                                 // Delta of 100 degrees, set fans in Fan Control to 100% to give audible cue
     return;
-  }*/
+  }
 
   if (delta != lastdelta) {                            // Update LED only if the integer value changes
     set_rgb_color(temp_to_rgb(round(delta)));

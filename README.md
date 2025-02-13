@@ -1,9 +1,6 @@
 # Trinket-M0-dual-temperature-sensor
 Simple project to allow monitoring of liquid temps in liquid cooling PCs with mainboards without temperature pins.
 
-> [!WARNING]  
-> Still waiting for the second sensor to arrive, code is not working with the second sensor right now.
-
 ## Usage
 1. Make sure that your computer has two temp probes installed. For my project I used [Alphacool Thermosensor single 50cm | Part #10196](https://shop.alphacool.com/en/shop/controllers-and-sensors/temperature-sensor/sen-alphacool-thermosensor-single-50cm) and [Alphacool Eiszapfen temperature sensor | Part #17363](https://shop.alphacool.com/en/shop/controllers-and-sensors/temperature-sensor/sen-alphacool-eiszapfen-temperature-sensor-g1/4-ig/ig-with-ag-adapter-deep-black), but any will be fine ([sensor datasheet](https://download.alphacool.com/legacy/kOhm_Sensor_Table_Alphacool.pdf)).
 2. Buy yourself a [Trinket M0](https://www.adafruit.com/product/3500). This is the board I used, but feel free to use a different one and change the code as needed. **Trinket M0** is very cool as it can natively output serial data via USB, and it can be seen in Windows as COM device. It also has RGB diode which is useful to have some indication of liquid temperature without need to access data in OS.
