@@ -51,6 +51,7 @@ int temp_to_colors[25][2] = {
 Adafruit_DotStar rgbLed(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BGR);
 float averageResistance1, averageResistance2, ambient, liquid;
 int delta, lastdelta;
+bool led_is_on = false;
 
 void setup() {
   lastdelta = -100;
@@ -63,9 +64,19 @@ void setup() {
   rgbLed.show();
 }
 
-void led_on() { digitalWrite(RED_LED, HIGH); }
+void led_on() {
+  if (!led_is_on) {
+    digitalWrite(RED_LED, HIGH);
+    led_is_on = true;
+  }
+}
 
-void led_off() { digitalWrite(RED_LED, LOW); }
+void led_off() {
+  if (led_is_on) {
+    digitalWrite(RED_LED, LOW);
+    led_is_on = false;
+  }
+}
 
 void take_reading(float &average1, float &average2) {
   long double sum1 = 0, sum2 = 0;
@@ -112,6 +123,13 @@ int temp_to_rgb(int delta) {
   return temp_to_colors[delta][1];
 }
 
+void update_rgb_led() {
+  if (delta != lastdelta) {                            // Update LED only if the integer value changes
+    set_rgb_color(temp_to_rgb(round(delta)));
+    lastdelta = delta;                                 // Store new value
+  }
+}
+
 void json_temp(float temp1, float temp2) {             // Outputs in JSON format: {"temp1":22.66,"temp2":22.50}
   Serial.print("{\"temp1\":");
   Serial.print(temp1);
@@ -132,14 +150,14 @@ void loop() {                                          // no delay needed, alrea
       liquid < 15 || liquid > 60 ||
       delta < -2) {                                    // Failure detection
     led_on();
+    update_rgb_led();
     json_temp(0, 100);                                 // Delta of 100 degrees, set fans in Fan Control to 100% to give audible cue
     return;
+  } else {
+    led_off();
   }
 
-  if (delta != lastdelta) {                            // Update LED only if the integer value changes
-    set_rgb_color(temp_to_rgb(round(delta)));
-    lastdelta = delta;                                 // Store new value
-  }
+  update_rgb_led();
 
   json_temp(ambient, liquid);
 }
